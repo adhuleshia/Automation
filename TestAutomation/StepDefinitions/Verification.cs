@@ -23,27 +23,36 @@ namespace TestAutomation.StepDefinitions
         }
 
 
-        [Then(@"shopping cart has (.*) of (.*)")]
-        public void ThenShoppingCartHasOf(string p0, string p1)
+        [Then(@"the shopping cart has (.*) of (.*)")]
+        public void ThenTheShoppingCartHasOf(string p0, string p1)
         {
-            Assert.IsTrue(CartPage.CountItems(p1).ToString().Equals(p0),"Cart quantity value is not equal to {0}",p0);
+            Assert.IsTrue(CartPage.CountItems(p1).ToString().Equals(p0), "Cart quantity value is not equal to {0}", p0);
             Assert.IsTrue(CartPage.GetColumnRowByIndex(ShoppingCartPage.ColumnHeaders.productTitle, 1)
                 .Contains(p1), "The item selected on desktop page does not exists in cart");
         }
 
 
-        [Then(@"shopping cart page has (.*) of (.*)")]
-        public void ThenShoppingCartPageHasOf(string p0, string p1)
+        [Then(@"cart has (.*) of (.*)")]
+        public void ThenCartHasOf(string p0, string p1)
         {
             Assert.IsTrue(CartPage.CountItems(p1).ToString().Equals(p0), "Cart quantity value is not equal to {0}", p0);
             Assert.IsTrue(CartPage.GetColumnRowByIndex(ShoppingCartPage.ColumnHeaders.productTitle, 2)
                 .Contains(p1), "The item selected on book page does not exists in cart");
         }
 
-        [Then(@"total of shopping cart is \$(.*)")]
-        public void ThenTotalOfShoppingCartIs(string p0)
+        [Then(@"Total is \$(.*)")]
+        public void ThenTotalIs(string p0)
         {
-            Assert.IsTrue(CartPage.GetOrderTotalValue().Equals(p0),"Cart total is not equal to {0}",p0);
+            Assert.IsTrue(CartPage.GetOrderTotalValue().Equals(p0), "Cart total is not equal to {0}", p0);
+        }
+
+
+        [Then(@"shopping cart page has (.*) (.*)")]
+        public void ThenShoppingCartPageHas(string p0, string p1)
+        {
+            Assert.IsTrue(CartPage.CountItems(p1).ToString().Equals(p0), "Cart quantity value is not equal to {0}", p0);
+            Assert.IsTrue(CartPage.GetColumnRowByIndex(ShoppingCartPage.ColumnHeaders.productTitle, 1)
+                .Contains(p1), "The item selected on book page does not exists in cart");
         }
 
 

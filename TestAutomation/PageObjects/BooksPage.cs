@@ -21,7 +21,7 @@ namespace TestAutomation.PageObjects
         public void AddBooksItemsToCart(int elementIndex)
         {
             _driver.FindElements(By.CssSelector(".details .add-info .buttons > input[class*=cart-button]"))
-                .ElementAt(elementIndex).SendKeys(Keys.Enter);
+                .ElementAt(elementIndex).Click();
         }
 
         //To-Do move this to common component

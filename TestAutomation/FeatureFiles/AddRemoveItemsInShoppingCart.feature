@@ -18,7 +18,7 @@ Scenario:Add cheapest computer item to cart
 	And sorted items Price Low to High
 	When customer clicks Add on first in the list
 	And clicks on Shopping cart link from pop-up window
-	Then shopping cart has <quantity> of <ComputerItem>
+	Then the shopping cart has <quantity> of <ComputerItem>
 	Examples: 
 	| ComputerItem|quantity |
 	| PC  | 1        |
@@ -31,22 +31,23 @@ Scenario: Add book item to cart
 	And customer navigated to Books page using menu item Books
 	When customer click Add on first <BookItem> in the list
 	And clicks on Shopping cart link from pop-up window
-	Then shopping cart has <quantity> of <ComputerItem>
-	And shopping cart page has <countOfBooks> of <BookItem>
-	And total of shopping cart is $<cartTotal>
+	Then the shopping cart has <quantity> of <ComputerItem>
+	And cart has <countOfBooks> of <BookItem>
+	And Total is $<cartTotal>
 	Examples: 
-	| ComputerItem | BookItem						  | countOfBooks | cartTotal | quantity |
-	| PC| Fahrenheit 451 by Ray Bradbury | 1            | 527.00    | 1        |
+	| ComputerItem | BookItem	 | countOfBooks | cartTotal | quantity |
+	| PC		   | Fahrenheit  | 1            | 527.00    | 1        |
 	
 @FT
 Scenario Outline: Remove items from the cart
-	Given customer's shopping cart has <qtyOfDesktops> <ComputerItem> at price <ComputerPrice>
-	And added <qtyOfBooks> book item of price $<costPerBook> to shopping cart
-	And added <qtyOfDesktops> computer item of price $<costPerDesktop> to shopping cart
+Scenario: Remove desktop item from the cart
+	Given customer navigated to website
+	And added <qtyOfDesktops> firstDesktop <ComputerItem> of price $<costPerDesktop> to shopping cart
+	And added <qtyOfBooks> firstBook <BookItem> of price $<costPerBook> to shopping cart
 	And total of shopping cart is $<InitialCartTotal>
 	When customer clicks on Remove for <qtyOfDesktops> book item in the list
-	Then shopping cart page has <qtyOfBooks> <BookItem>
+	Then cart has <qtyOfBooks> of <BookItem>
 	And total of shopping cart is $<FinalCartTotal>	
 	Examples: 
-	| ComputerItem  | qtyOfDesktops | ComputerPrice | qtyOfBooks | costPerBook | FinalCartTotal | BookItem					   |
-	| PC| 1             | 500.00        | 1          | 27.00       | 27.00          | Fahrenheit 451 by Ray Bradbury |
+	| ComputerItem | qtyOfDesktops | ComputerPrice | qtyOfBooks | costPerBook | FinalCartTotal | BookItem   | InitialCartTotal |
+	| PC           | 1             | 500.00        | 1          | 27.00       | 27.00          | Fahrenheit | 527.00           |

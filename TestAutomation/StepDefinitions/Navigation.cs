@@ -15,6 +15,7 @@ namespace TestAutomation.StepDefinitions
         private NavigationBar NavBar => new NavigationBar(_driver);
         private DesktopsPage DeskPage => new DesktopsPage(_driver);
         private BooksPage BookPage => new BooksPage(_driver);
+        private ShoppingCartPage cartPage => new ShoppingCartPage(_driver);
 
 
         private ScenarioContext _scenarioContext;
@@ -45,10 +46,11 @@ namespace TestAutomation.StepDefinitions
         [Given(@"customer navigated to website")]
         public void GivenCustomerNavigatedToWebsite()
         {
-            _driver.Navigate().GoToUrl("https://demo.nopcommerce.com/");
-            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            //To-do move this to before scenario whilst refactor task
+            NavigateToSite();
         }
 
+   
         [Given(@"navigated to Desktops page using menu item Computers > Desktops")]
         public void GivenNavigatedToDesktopsPageUsingMenuItemComputersDesktops()
         {
@@ -67,7 +69,34 @@ namespace TestAutomation.StepDefinitions
            // Add zeroth index item from the list of IWebElements
             DeskPage.AddDesktopItemsToCart(0);
         }
+        [Given(@"added (.*) firstDesktop (.*) of price \$(.*) to shopping cart")]
+        public void GivenAddedFirstDesktopOfPriceToShoppingCart(string p0, string p1, string p2)
+        {
+            GivenNavigatedToDesktopsPageUsingMenuItemComputersDesktops();
+            GivenSortedItemsPriceLowToHigh();
+            GivenCustomerClicksAddOnFirstInTheList();
+        }
 
+        [Given(@"customer navigated to Books page using menu item Books")]
+        public void GivenCustomerNavigatedToBooksPageUsingMenuItemBooks()
+        {
+            NavBar.HoverMainMenuAndClickChild(NavBar.BooksMenuOption, null);
+        }
+
+        [Given(@"added (.*) firstBook (.*) of price \$(.*) to shopping cart")]
+        public void GivenAddedFirstBookOfPriceToShoppingCart(string p0, string p1, string p2)
+        {
+            GivenCustomerNavigatedToBooksPageUsingMenuItemBooks();
+            WhenCustomerClickAddOnFirstInTheList(p0);
+
+        }
+
+  
+        [Given(@"total of shopping cart is \$(.*)")]
+        public void GivenTotalOfShoppingCartIs(string p0)
+        {
+            WhenClicksOnShoppingCartLinkFromPop_UpWindow();
+        }
         [When(@"customer click Add on first (.*) in the list")]
         public void WhenCustomerClickAddOnFirstInTheList(string p0)
         {
@@ -89,41 +118,20 @@ namespace TestAutomation.StepDefinitions
             DeskPage.ClickShoppingCarLinkFromNotifBar();
         }
 
-        [Given(@"customer navigated to Books page using menu item Books")]
-        public void GivenCustomerNavigatedToBooksPageUsingMenuItemBooks()
-        {
-            NavBar.BooksMenuOption.Click();
-        }
-
-        [Given(@"customer's shopping cart has (.*) First in list at price (.*)")]
-        public void GivenCustomerSShoppingCartHasFirstInListAtPrice(int p0, Decimal p1)
-        {
-            //ScenarioContext.Current.Pending();
-        }
-
-        [Given(@"added (.*) book item of price \$(.*) to shopping cart")]
-        public void GivenAddedBookItemOfPriceToShoppingCart(int p0, Decimal p1)
-        {
-            //ScenarioContext.Current.Pending();
-        }
-
-        [Given(@"added (.*) computer item of price \$(.*) to shopping cart")]
-        public void GivenAddedComputerItemOfPriceToShoppingCart(int p0, string p1)
-        {
-            //ScenarioContext.Current.Pending();
-        }
-
-        [Given(@"total of shopping cart is \$(.*)")]
-        public void GivenTotalOfShoppingCartIs(string p0)
-        {
-            //ScenarioContext.Current.Pending();
-        }
+        
 
         [When(@"customer clicks on Remove for (.*) book item in the list")]
         public void WhenCustomerClicksOnRemoveForBookItemInTheList(int p0)
         {
-            //ScenarioContext.Current.Pending();
+            cartPage.RemoveItemWithDetailsAtIndex(0);
         }
+
+        private void NavigateToSite()
+        {
+            _driver.Navigate().GoToUrl("https://demo.nopcommerce.com/");
+            _driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+        }
+
 
     }
 }

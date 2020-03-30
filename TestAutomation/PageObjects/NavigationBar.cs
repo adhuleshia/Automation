@@ -25,11 +25,17 @@
             //Mouseover on an element
             actions.MoveToElement(mainMenu).Perform();
             //Sub Menu
-            
-            //To mouseover on sub menu
-            actions.MoveToElement(subMenu);
-            //build() method is used to compile all the actions into a single step 
-            actions.Click().Build().Perform();
+            if (subMenu == null)
+            {
+                actions.Click().Build().Perform();
+            }
+            else
+            {  //To mouseover on sub menu
+                actions.MoveToElement(subMenu);
+                //build() method is used to compile all the actions into a single step 
+                actions.Click().Build().Perform();
+            }
+           
         }
     }
 }
