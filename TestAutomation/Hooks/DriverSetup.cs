@@ -20,7 +20,11 @@
         [BeforeScenario]
         public void BeforeScenario()
         {
+            ChromeOptions options = new ChromeOptions();
+            options.AddArgument("--start-maximized");
             Driver = new ChromeDriver();
+            //if the intital options setting fail this is workaround
+            Driver.Manage().Window.Maximize();
             _objectContainer.RegisterInstanceAs(Driver);
         }
 

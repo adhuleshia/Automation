@@ -1,30 +1,51 @@
-﻿namespace TestAutomation.StepDefinitions
-{
-    using NUnit.Framework;
-    using OpenQA.Selenium;
-    using PageObjects;
-    using TechTalk.SpecFlow;
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using TechTalk.SpecFlow;
+using TestAutomation.PageObjects;
 
+namespace TestAutomation.StepDefinitions
+{
     [Binding]
-    public class TestStepDefinition
+    public sealed class Verification
     {
+
         private IWebDriver _driver;
         private ScenarioContext _scenarioContext;
-
-        public TestStepDefinition(IWebDriver driver, ScenarioContext scenarioContext)
+        private ShoppingCartPage CartPage => new ShoppingCartPage(_driver);
+        public Verification(IWebDriver driver, ScenarioContext scenarioContext)
         {
             _driver = driver;
             _scenarioContext = scenarioContext;
         }
 
-        [Then(@"the page should be displayed")]
-        public void ThenThePageIsDisplayed()
+
+        [Then(@"shopping cart has (.*) of (.*)")]
+        public void ThenShoppingCartHasOf(string p0, string p1)
         {
-            var page = _scenarioContext["pageName"];
-            Assert.AreEqual($"https://www.asos.com/{page}/", _driver.Url);
+            Assert.IsTrue(CartPage.CountItems(p1).ToString().Equals(p0),"Cart quantity value is not equal to {0}",p0);
+            Assert.IsTrue(CartPage.GetColumnRowByIndex(ShoppingCartPage.ColumnHeaders.productTitle, 1)
+                .Contains(p1), "The item selected on desktop page does not exists in cart");
         }
+
+
+        [Then(@"shopping cart page has (.*) of (.*)")]
+        public void ThenShoppingCartPageHasOf(string p0, string p1)
+        {
+            Assert.IsTrue(CartPage.CountItems(p1).ToString().Equals(p0), "Cart quantity value is not equal to {0}", p0);
+            Assert.IsTrue(CartPage.GetColumnRowByIndex(ShoppingCartPage.ColumnHeaders.productTitle, 2)
+                .Contains(p1), "The item selected on book page does not exists in cart");
+        }
+
+        [Then(@"total of shopping cart is \$(.*)")]
+        public void ThenTotalOfShoppingCartIs(string p0)
+        {
+            Assert.IsTrue(CartPage.GetOrderTotalValue().Equals(p0),"Cart total is not equal to {0}",p0);
+        }
+
 
     }
 }
-
-
