@@ -19,8 +19,8 @@ Scenario:Add cheapest computer item to cart
 	And clicks on Shopping cart link from pop-up window
 	Then the shopping cart has <quantity> of <ComputerItem>
 	Examples: 
-	| ComputerItem|quantity |
-	| PC  | 1        |
+	| ComputerItem                          |quantity |
+	| Lenovo IdeaCentre 600 All-in-One PC   | 1        |
 
 @FT
 Scenario: Add book item to cart
@@ -35,8 +35,8 @@ Scenario: Add book item to cart
 	And cart has <countOfBooks> of <BookItem>
 	And Total is $<cartTotal>
 	Examples: 
-	| ComputerItem | BookItem	 | countOfBooks | cartTotal | quantity |
-	| PC		   | Fahrenheit  | 1            | 527.00    | 1        |
+	| ComputerItem                        | BookItem	                    |countOfBooks  | cartTotal | quantity |
+	| Lenovo IdeaCentre 600 All-in-One PC | Fahrenheit 451 by Ray Bradbury  | 1            | 527.00    | 1        |
 	
 @FT
 Scenario Outline: Remove items from the cart
@@ -49,5 +49,5 @@ Scenario: Remove desktop item from the cart
 	Then cart has <qtyOfBooks> of <BookItem>
 	And total of shopping cart is $<FinalCartTotal>	
 	Examples: 
-	| ComputerItem | qtyOfDesktops | ComputerPrice | qtyOfBooks | costPerBook | FinalCartTotal | BookItem   | InitialCartTotal |
-	| PC           | 1             | 500.00        | 1          | 27.00       | 27.00          | Fahrenheit | 527.00           |
+	| ComputerItem                         | qtyOfDesktops | ComputerPrice | qtyOfBooks | costPerBook | FinalCartTotal | BookItem                       | InitialCartTotal |
+	| Lenovo IdeaCentre 600 All-in-One PC  | 1             | 500.00        | 1          | 27.00       | 27.00          | Fahrenheit 451 by Ray Bradbury | 527.00           |

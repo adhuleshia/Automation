@@ -127,12 +127,12 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.DescriptionAttribute("Add cheapest computer item to cart")]
-        [NUnit.Framework.TestCaseAttribute("PC", "1", null, TestName="Add cheapest computer item to cart(PC,1)")]
+        [NUnit.Framework.TestCaseAttribute("Lenovo IdeaCentre 600 All-in-One PC", "1", null, TestName="Add cheapest computer item to cart(Lenovo IdeaCentre 600 All-in-One PC,1)")]
         public virtual void AddCheapestComputerItemToCart(string computerItem, string quantity, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add cheapest computer item to cart", null, exampleTags);
-#line 15
+#line 14
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -155,22 +155,22 @@ this.ScenarioInitialize(scenarioInfo);
 #line 6
 this.FeatureBackground();
 #line hidden
-#line 16
+#line 15
  testRunner.Given("customer navigated to website", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 17
+#line 16
  testRunner.And("navigated to Desktops page using menu item Computers > Desktops", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 18
+#line 17
  testRunner.And("sorted items Price Low to High", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 19
+#line 18
  testRunner.When("customer clicks Add on first in the list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 20
+#line 19
  testRunner.And("clicks on Shopping cart link from pop-up window", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 21
+#line 20
  testRunner.Then(string.Format("the shopping cart has {0} of {1}", quantity, computerItem), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -178,11 +178,19 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.DescriptionAttribute("Add book item to cart")]
-        [NUnit.Framework.TestCaseAttribute("PC", "Fahrenheit", "1", "527.00", "1", null, TestName="Add book item to cart(PC,Fahrenheit,1,527.00,1)")]
+        [NUnit.Framework.CategoryAttribute("FT")]
+        [NUnit.Framework.TestCaseAttribute("Lenovo IdeaCentre 600 All-in-One PC", "Fahrenheit 451 by Ray Bradbury", "1", "527.00", "1", null, TestName="Add book item to cart(Lenovo IdeaCentre 600 All-in-One PC,Fahrenheit 451 by Ray B" +
+            "radbury,1,527.00,1)")]
         public virtual void AddBookItemToCart(string computerItem, string bookItem, string countOfBooks, string cartTotal, string quantity, string[] exampleTags)
         {
-            string[] tagsOfScenario = exampleTags;
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add book item to cart", null, exampleTags);
+            string[] @__tags = new string[] {
+                    "FT"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add book item to cart", null, @__tags);
 #line 26
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -277,7 +285,8 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.DescriptionAttribute("Remove desktop item from the cart")]
-        [NUnit.Framework.TestCaseAttribute("PC", "1", "500.00", "1", "27.00", "27.00", "Fahrenheit", "527.00", null, TestName="Remove desktop item from the cart(PC,1,500.00,1,27.00,27.00,Fahrenheit,527.00)")]
+        [NUnit.Framework.TestCaseAttribute("Lenovo IdeaCentre 600 All-in-One PC", "1", "500.00", "1", "27.00", "27.00", "Fahrenheit 451 by Ray Bradbury", "527.00", null, TestName="Remove desktop item from the cart(Lenovo IdeaCentre 600 All-in-One PC,1,500.00,1," +
+            "27.00,27.00,Fahrenheit 451 by Ray Bradbury,527.00)")]
         public virtual void RemoveDesktopItemFromTheCart(string computerItem, string qtyOfDesktops, string computerPrice, string qtyOfBooks, string costPerBook, string finalCartTotal, string bookItem, string initialCartTotal, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
