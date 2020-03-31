@@ -36,7 +36,7 @@ namespace TestAutomation.StepDefinitions
         public void ThenCartHasOf(string p0, string p1)
         {
             Assert.IsTrue(CartPage.CountItems(p1).ToString().Equals(p0), "Cart quantity value is not equal to {0}", p0);
-            Assert.IsTrue(CartPage.GetColumnRowByIndex(ShoppingCartPage.ColumnHeaders.productTitle, 2)
+            Assert.IsTrue(CartPage.GetColumnRowByIndex(ShoppingCartPage.ColumnHeaders.productTitle, 1)
                 .Contains(p1), "The item selected on book page does not exists in cart");
         }
 
@@ -54,6 +54,12 @@ namespace TestAutomation.StepDefinitions
             Assert.IsTrue(CartPage.GetColumnRowByIndex(ShoppingCartPage.ColumnHeaders.productTitle, 1)
                 .Contains(p1), "The item selected on book page does not exists in cart");
         }
+        [Then(@"total of shopping cart is \$(.*)")]
+        public void ThenTotalOfShoppingCartIs(string p0)
+        {
+            Assert.IsTrue(CartPage.GetOrderTotalValue().Equals(p0), "Card total is not equal to {0}", p0);
+        }
+
 
 
     }

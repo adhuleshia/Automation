@@ -11,7 +11,6 @@ Background: Ecommerce website
 
 @FT
 Scenario Outline: Add items to cart
-	
 Scenario:Add cheapest computer item to cart
 	Given customer navigated to website
 	And navigated to Desktops page using menu item Computers > Desktops
@@ -23,6 +22,7 @@ Scenario:Add cheapest computer item to cart
 	| ComputerItem|quantity |
 	| PC  | 1        |
 
+@FT
 Scenario: Add book item to cart
 	Given customer navigated to website
 	And navigated to Desktops page using menu item Computers > Desktops
