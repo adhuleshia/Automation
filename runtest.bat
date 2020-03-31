@@ -1,0 +1,2 @@
+packages\NUnit.ConsoleRunner.3.11.1\tools\nunit3-console.exe --result="TestResult.xml;format=nunit2" TestAutomation\bin\Debug\TestAutomation.dll 
+tools\specflow.exe nunitexecutionreport --ProjectFile TestAutomation\TestAutomation.csproj --xmlTestResult TestResult.xml --OutputFile TestResult.html

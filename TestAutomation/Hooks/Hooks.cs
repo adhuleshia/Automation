@@ -1,5 +1,6 @@
 ﻿namespace TestAutomation.Hooks
 {
+    using NUnit.Framework;
     using OpenQA.Selenium;
     using TechTalk.SpecFlow;
 
@@ -16,6 +17,7 @@
         [AfterScenario]
         public void AfterScenario()
         {
+            TestContext.WriteLine();
             Driver.Quit();
         }
 
