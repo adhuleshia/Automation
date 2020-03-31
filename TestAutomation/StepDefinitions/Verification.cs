@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using NLog.Fluent;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
@@ -31,6 +32,7 @@ namespace TestAutomation.StepDefinitions
 
         private void VerifyCartItems(string p0, string p1)
         {
+            Log.Info("Entering");
             Assert.IsTrue(CartPage.GetAllColumnRows(ShoppingCartPage.ColumnHeaders.qty).FirstOrDefault().Equals(p0), "Quantity value is not equal to {0}", p0);
             Assert.IsTrue(CartPage.GetAllColumnRows(ShoppingCartPage.ColumnHeaders.productTitle).Contains(p1), "The item selected on page does not exists in cart");
         }
