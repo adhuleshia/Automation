@@ -17,7 +17,7 @@
 
         }
 
-        [BeforeScenario]
+        [BeforeScenario("@FT")]
         public void BeforeScenario()
         {
             ChromeOptions options = new ChromeOptions();

@@ -11,6 +11,7 @@ Background: Ecommerce website
 
 @FT
 Scenario Outline: Add items to cart
+@FT
 Scenario:Add cheapest computer item to cart
 	Given customer navigated to website
 	And navigated to Desktops page using menu item Computers > Desktops
@@ -40,6 +41,7 @@ Scenario: Add book item to cart
 	
 @FT
 Scenario Outline: Remove items from the cart
+@FT
 Scenario: Remove desktop item from the cart
 	Given customer navigated to website
 	And added <qtyOfDesktops> firstDesktop <ComputerItem> of price $<costPerDesktop> to shopping cart

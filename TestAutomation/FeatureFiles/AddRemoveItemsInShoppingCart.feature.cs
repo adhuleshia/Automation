@@ -127,12 +127,19 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.DescriptionAttribute("Add cheapest computer item to cart")]
+        [NUnit.Framework.CategoryAttribute("FT")]
         [NUnit.Framework.TestCaseAttribute("Lenovo IdeaCentre 600 All-in-One PC", "1", null, TestName="Add cheapest computer item to cart(Lenovo IdeaCentre 600 All-in-One PC,1)")]
         public virtual void AddCheapestComputerItemToCart(string computerItem, string quantity, string[] exampleTags)
         {
-            string[] tagsOfScenario = exampleTags;
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add cheapest computer item to cart", null, exampleTags);
-#line 14
+            string[] @__tags = new string[] {
+                    "FT"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add cheapest computer item to cart", null, @__tags);
+#line 15
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -155,22 +162,22 @@ this.ScenarioInitialize(scenarioInfo);
 #line 6
 this.FeatureBackground();
 #line hidden
-#line 15
+#line 16
  testRunner.Given("customer navigated to website", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 16
+#line 17
  testRunner.And("navigated to Desktops page using menu item Computers > Desktops", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 17
+#line 18
  testRunner.And("sorted items Price Low to High", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 18
+#line 19
  testRunner.When("customer clicks Add on first in the list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 19
+#line 20
  testRunner.And("clicks on Shopping cart link from pop-up window", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 20
+#line 21
  testRunner.Then(string.Format("the shopping cart has {0} of {1}", quantity, computerItem), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -191,7 +198,7 @@ this.FeatureBackground();
             }
             string[] tagsOfScenario = @__tags;
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add book item to cart", null, @__tags);
-#line 26
+#line 27
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -214,34 +221,34 @@ this.ScenarioInitialize(scenarioInfo);
 #line 6
 this.FeatureBackground();
 #line hidden
-#line 27
+#line 28
  testRunner.Given("customer navigated to website", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 28
+#line 29
  testRunner.And("navigated to Desktops page using menu item Computers > Desktops", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 29
+#line 30
  testRunner.And("sorted items Price Low to High", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 30
+#line 31
  testRunner.And("customer clicks Add on first in the list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 31
+#line 32
  testRunner.And("customer navigated to Books page using menu item Books", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 32
+#line 33
  testRunner.When(string.Format("customer click Add on first {0} in the list", bookItem), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 33
+#line 34
  testRunner.And("clicks on Shopping cart link from pop-up window", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 34
+#line 35
  testRunner.Then(string.Format("the shopping cart has {0} of {1}", quantity, computerItem), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 35
+#line 36
  testRunner.And(string.Format("cart has {0} of {1}", countOfBooks, bookItem), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 36
+#line 37
  testRunner.And(string.Format("Total is ${0}", cartTotal), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
@@ -257,7 +264,7 @@ this.FeatureBackground();
                     "FT"};
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Remove items from the cart", null, new string[] {
                         "FT"});
-#line 42
+#line 43
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -285,13 +292,20 @@ this.FeatureBackground();
         }
         
         [NUnit.Framework.DescriptionAttribute("Remove desktop item from the cart")]
+        [NUnit.Framework.CategoryAttribute("FT")]
         [NUnit.Framework.TestCaseAttribute("Lenovo IdeaCentre 600 All-in-One PC", "1", "500.00", "1", "27.00", "27.00", "Fahrenheit 451 by Ray Bradbury", "527.00", null, TestName="Remove desktop item from the cart(Lenovo IdeaCentre 600 All-in-One PC,1,500.00,1," +
             "27.00,27.00,Fahrenheit 451 by Ray Bradbury,527.00)")]
         public virtual void RemoveDesktopItemFromTheCart(string computerItem, string qtyOfDesktops, string computerPrice, string qtyOfBooks, string costPerBook, string finalCartTotal, string bookItem, string initialCartTotal, string[] exampleTags)
         {
-            string[] tagsOfScenario = exampleTags;
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Remove desktop item from the cart", null, exampleTags);
-#line 43
+            string[] @__tags = new string[] {
+                    "FT"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Remove desktop item from the cart", null, @__tags);
+#line 45
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -314,25 +328,25 @@ this.ScenarioInitialize(scenarioInfo);
 #line 6
 this.FeatureBackground();
 #line hidden
-#line 44
+#line 46
  testRunner.Given("customer navigated to website", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 45
+#line 47
  testRunner.And(string.Format("added {0} firstDesktop {1} of price $<costPerDesktop> to shopping cart", qtyOfDesktops, computerItem), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 46
+#line 48
  testRunner.And(string.Format("added {0} firstBook {1} of price ${2} to shopping cart", qtyOfBooks, bookItem, costPerBook), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 47
+#line 49
  testRunner.And(string.Format("total of shopping cart is ${0}", initialCartTotal), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 48
+#line 50
  testRunner.When(string.Format("customer clicks on Remove for {0} book item in the list", qtyOfDesktops), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 49
+#line 51
  testRunner.Then(string.Format("cart has {0} of {1}", qtyOfBooks, bookItem), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 50
+#line 52
  testRunner.And(string.Format("total of shopping cart is ${0}", finalCartTotal), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }

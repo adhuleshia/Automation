@@ -14,7 +14,7 @@
             Driver = driver;
         }
 
-        [AfterScenario]
+        [AfterScenario("@FT")]
         public void AfterScenario()
         {
             TestContext.WriteLine();
